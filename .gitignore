@@ -1,0 +1,4 @@
+*.pyc
+*~
+solarSystem/db.sqlite3
+solarSystem/static
