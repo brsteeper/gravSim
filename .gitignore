@@ -1,4 +1,6 @@
 *.pyc
+*.pyo
 *~
 solarSystem/db.sqlite3
 solarSystem/static
+__pycache__/
