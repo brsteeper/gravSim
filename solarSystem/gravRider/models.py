@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+class Body(models.Model):
+	name = models.CharField(max_length = 50)
+	mass = models.FloatField()
+
+	def __str__(self):
+		return self.name
