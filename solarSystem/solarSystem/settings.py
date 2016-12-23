@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'solarSim.apps.SolarsimConfig',
     'gravRider.apps.GravriderConfig',
     'django.contrib.admin',
     'django.contrib.auth',

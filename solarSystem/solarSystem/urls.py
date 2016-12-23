@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
+	url(r'^solarSim/', include('solarSim.urls')),
 	url(r'^gravRider/', include('gravRider.urls')),
     url(r'^admin/', admin.site.urls),
 ]
