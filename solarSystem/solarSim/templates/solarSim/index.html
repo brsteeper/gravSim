@@ -7,11 +7,21 @@
 </head>
 <body>
 
-<p>mass: 1000000000kg <br>
-velocity: 2000000km/h <br>
-initial position : 0,20000000,0</p>
-<br>
-<button type='button'>Run</button>
+	<form>
+		{% for field in form %}
+			<p>
+				{{ field.label_tag }} <br>
+				{{ field }}
+			</p>
+			{% endfor %}
+	</form>
+
+	<!--<p>Planet Name: {{ planet_name }}<br>
+	Mass: {{ mass}} <br>
+	velocity: 2000000km/h <br>
+	initial position : 0,20000000,0</p>
+	<br>-->
+	<button type='button'>Run</button>
 
 </body>
 </html>

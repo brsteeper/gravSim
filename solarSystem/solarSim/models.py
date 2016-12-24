@@ -2,5 +2,7 @@
 
 from django.db import models
 
-#make a model to take the data from the form
-#class planetStats
+class Planet(models.Model):
+	name = models.CharField(max_length = 50)
+	mass = models.FloatField()
+	
