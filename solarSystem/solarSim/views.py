@@ -1,7 +1,7 @@
 #solarSim
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import CreatePlanetForm
 from .models import Planet
 
@@ -12,12 +12,19 @@ def index (request):
 			planet = Planet()
 			planet.name = form.cleaned_data["planet_name"]
 			planet.mass = form.cleaned_data["planet_mass"]
+			planet.x = form.cleaned_data["planet_x"]
+			planet.y = form.cleaned_data["planet_y"]
+			planet.z = form.cleaned_data["planet_z"]
 			planet.save()
-			return render(request, 'solarSim/display.html', {'planetID': planet.id}) #I want this to call display through its def in this file not through the .html. I think?
+			#return render(request, 'solarSim/display.html', {'planetID': planet.id}) #I want this to call display through its def in this file not through the .html. I think?
+			return redirect('display', planet.id)
 	else:
 		form = CreatePlanetForm
 		return render(request, 'solarSim/index.html', {'form': form, 'action_path' : request.path})
 
 def display (request, planetID):
-	planet = Planet.objects.get(pk=plantID)
-	return render(request, 'solarSim/display.html', {'planet': planet})
+	planet = Planet.objects.get(pk=planetID)
+	#content = {'name': planet.name, 'mass': planet.mass}
+	content = {'planet': planet}
+
+	return render(request, 'solarSim/display.html', content)
