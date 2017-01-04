@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import CreatePlanetForm
 from .models import Planet
+from django.forms.models import model_to_dict
+import json
 
 def index (request):
 	if request.method == 'POST':
@@ -24,7 +26,11 @@ def index (request):
 
 def display (request, planetID):
 	planet = Planet.objects.get(pk=planetID)
-	#content = {'name': planet.name, 'mass': planet.mass}
-	content = {'planet': planet}
+	dict_planet = model_to_dict(planet)
+	json_planet = json.dumps(dict_planet)
+
+	content = {'planet' : json_planet}
+	#content = {'planet': planet}
+	#import pdb; pdb.set_trace()
 
 	return render(request, 'solarSim/display.html', content)
