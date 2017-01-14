@@ -11,6 +11,8 @@ def index (request):
 	if request.method == 'POST':
 		form = CreatePlanetForm(request.POST)
 		if form.is_valid():
+			# if form.cleaned_data["planet_x"]==0 and form.cleaned_data["planet_y"]==0:
+			# 	return alert("The simulation will not work if BOTH x and y are 0")
 			planet = Planet()
 			planet.name = form.cleaned_data["planet_name"]
 			planet.mass = form.cleaned_data["planet_mass"]
